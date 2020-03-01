@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install: #series of steps that get executed before the tests start running
+  - docker build -t afankhan/docker-react -f Dockerfile.dev .
+
+script: # this section contains all commands that needs to be executed to run test suite
+  - docker run -e CI=true afankhan/docker-react npm run test
