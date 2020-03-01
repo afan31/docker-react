@@ -20,4 +20,4 @@ deploy: # add configuration to tell travis ci to how to deploy to aws
     branch: master # any time you push code to branch master, thats the time to deploy
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key:
-    secure: "$AWS_SECRET_KEY"
+    secure: $AWS_SECRET_KEY
