@@ -8,3 +8,16 @@ before_install: #series of steps that get executed before the tests start runnin
 
 script: # this section contains all commands that needs to be executed to run test suite
   - docker run -e CI=true afankhan/docker-react npm run test
+
+deploy: # add configuration to tell travis ci to how to deploy to aws
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "docker-react"
+  env: "DockerReact-env"
+  bucket_name: "elasticbeanstalk-us-east-1-661815601808"
+  bucket_path: "docker-react"
+  on:
+    branch: master # any time you push code to branch master, thats the time to deploy
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
